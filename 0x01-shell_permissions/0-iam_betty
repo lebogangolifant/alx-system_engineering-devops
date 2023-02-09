@@ -1,1 +1,2 @@
-Bash Executable Scripts
+#!/bin/bash
+su betty
