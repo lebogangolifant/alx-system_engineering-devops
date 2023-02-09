@@ -1,1 +1,0 @@
-Bash Exexutable Scripts
