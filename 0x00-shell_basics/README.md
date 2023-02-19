@@ -42,7 +42,7 @@ __man__ or __help__:
 ## Usage/Examples
 ###### *Example of line count and first line*
 
-```json
+```
 {
   lebogang@ubuntu:/projects$ wc -l 12-file_type 
   2 12-file_type
@@ -53,7 +53,7 @@ __man__ or __help__:
 ```
 
 ###### *Example to make file executable, use the command: `chmod u+x file`*
-```json
+```
 {
   lebogang@ubuntu:/projects$ ls
   0x001-file
