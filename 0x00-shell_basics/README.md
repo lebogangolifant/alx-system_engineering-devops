@@ -43,36 +43,36 @@ __man__ or __help__:
 ###### *Example of line count and first line*
 
 ```
-{
+
   lebogang@ubuntu:/projects$ wc -l 12-file_type 
   2 12-file_type
   lebogang@ubuntu:/projects$ head -n 1 12-file_type 
   #!/bin/bash
   lebogang@ubuntu:/projects$ 
-}
+
 ```
 
 ###### *Example to make file executable, use the command: `chmod u+x file`*
 ```
-{
+
   lebogang@ubuntu:/projects$ ls
   0x001-file
-  0x002-file
-  lebogang@ubuntu:/projects$chmod u+x 0x002-file #    make file executable
-  lebogang@ubuntu:/projects$ ls -l 0x002-file
-  -rwxrw-r-- 1 lebogang lebogang 08 Feb 23 09:05  0x002-file
-  lebogang@ubuntu:/projects$ ./0x002-file
+  list-file
+  lebogang@ubuntu:/projects$chmod u+x list-file # make file executable
+  lebogang@ubuntu:/projects$ ls -l list-file
+  -rwxrw-r-- 1 lebogang lebogang 08 Feb 23 09:05  list-file
+  lebogang@ubuntu:/projects$ ./list-file # display script results
   0x001-file
-  0x002-file
+  list-file
   lebogang@ubuntu:/projects$
-}
+
 ```
 
-## Projects Tasks
+## Project Tasks
 
 | TASK FILE                      | DESCRIPTION      | 
 |  -----------                   |  -----------     |
-| [0-current_working_directory](https://github.com/lebogangolifant/alx-system_engineering-devops/blob/master/0x00-shell_basics/0-current_working_directory) | Write a script that prints the absolute path name of the current working directory.            |
+|[0-current_working_directory](https://github.com/lebogangolifant/alx-system_engineering-devops/blob/master/0x00-shell_basics/0-current_working_directory) | Write a script that prints the absolute path name of the current working directory.            |
 |[1-listit](https://github.com/lebogangolifant/alx-system_engineering-devops/blob/master/0x00-shell_basics/1-listit)|Display the contents list of your current directory. |
 |[2-bring_me_home](https://github.com/lebogangolifant/alx-system_engineering-devops/blob/master/0x00-shell_basics/2-bring_me_home)|Write a script that changes the working directory to the user’s home directory.|
 |[3-listfiles](https://github.com/lebogangolifant/alx-system_engineering-devops/blob/master/0x00-shell_basics/3-listfiles)|Display current directory contents in a long format|
