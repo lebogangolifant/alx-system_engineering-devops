@@ -29,7 +29,7 @@ __read__ or __watch__:
 
 ## Projects Directories
 
-| PROJECTS                        | DIRECTORY | 
+| PROJECT                        | DIRECTORY | 
 |  -----------                    |     -----------  |
 | 1. __Shell, basics__                   | [0x00-shell_basics](https://github.com/lebogangolifant/alx-system_engineering-devops/tree/master/0x00-shell_basics)       |
 |2. __Shell, permissions__       | [0x01-shell_permissions](https://github.com/lebogangolifant/alx-system_engineering-devops/tree/master/0x01-shell_permissions)        |
@@ -47,6 +47,6 @@ __read__ or __watch__:
 
 ## Acknowledgements
 
-[ALX Software Engineering Training](https://www.alxafrica.com/)
+[ALX Africa](https://www.alxafrica.com/)
 
 
