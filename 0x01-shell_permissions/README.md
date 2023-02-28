@@ -3,30 +3,9 @@
 
 #### Using bash command line, scripting to automate common tasks.
 
-## Resources
+## Concepts
 
-__read__ or __watch__:
-
-- Learn [Shell Permission](https://intranet.alxswe.com/rltoken/aQmRB6ms-SDHUhqY0Rsa3g)
-
-OR  
-
-- Youtube 
-- Tutorial articles and more...
-
-__man__ or __help__:
-
-- `chmod`
-- `sudo`
-- `su`
-- `chown`
-- `chgrp`
-- `id`
-- `groups`
-- `whoami`
-- `adduser`
-- `useradd`
-- `addgroup`
+- __Linux file permissions__
 
 ## General Requirements
 

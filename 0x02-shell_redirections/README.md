@@ -3,32 +3,10 @@
 
 #### Using bash command line, scripting to automate common tasks.
 
-## Resources
+## Concepts
 
-__read__ or __watch__:
-
-- Learn [Shell, I/O Redirection](https://intranet.alxswe.com/rltoken/fGOQQXRKbvOcd1qLRxHzLQ)
-
-OR  
-
-- Youtube 
-- Tutorial articles and more...
-
-__man__ or __help__:
-
-- `echo`
-- `cat`
-- `head`
-- `tail`
-- `find`
-- `wc`
-- `sort`
-- `uniq`
-- `grep`
-- `tr`
-- `rev`
-- `cut`
-- `passwd (5)` (i.e. `man 5 passwd`)
+- __Shell, I/O Redirection__
+- __Special Characters__
 
 ## General Requirements
 

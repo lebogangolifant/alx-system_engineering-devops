@@ -3,14 +3,6 @@
 
 #### Using bash command line, scripting to automate common tasks.
 
-## Resources
-
-__read__ or __watch__:
-
-- Learn [Linux](http://linuxcommand.org)
-- Online tutorial articles
-- Youtube tutorials
-
 ## Project Objectives
 
 - What is the Shell

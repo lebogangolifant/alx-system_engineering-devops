@@ -3,29 +3,13 @@
 
 #### Using bash command line, scripting to automate common tasks.
 
-## Resources
+## Concepts
 
-__read__ or __watch__:
-
-- [Expansion](https://intranet.alxswe.com/rltoken/oXnzBjLBA9t9dr7WuftdmQ)
-- [Shell initialization files](https://intranet.alxswe.com/rltoken/tqud57kjsSYgDfeZDlwl3g)
-
-OR  
-
-- Youtube 
-- Tutorial articles and more...
-
-__man__ or __help__:
-
-- `printenv`
-- `set`
-- `unset`
-- `export`
-- `alias`
-- `unalias`
-- `.`
-- `source`
-- `printf`
+- __Shell Initialization Files__
+- __Variables__
+- __Expansions__
+- __Shell Arithmetic__
+- __The `alias` Command__
 
 ## General Requirements
 

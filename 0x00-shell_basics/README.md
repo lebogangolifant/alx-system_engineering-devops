@@ -3,33 +3,14 @@
 
 #### Using bash command line, scripting to automate common tasks.
 
-## Resources
+## Concepts
 
-__read__ or __watch__:
-
-- Learn [Linux](http://linuxcommand.org)
-
-OR  
-
-- Youtube 
-- Tutorial articles and more...
-
-__man__ or __help__:
-
-- `cd`
-- `ls`
-- `pwd`
-- `less`
-- `file`
-- `ln`
-- `cp`
-- `mv`
-- `rm`
-- `mkdir`
-- `type`
-- `which`
-- `help`
-- `man`
+- __Navigation__
+- __Looking Around__
+- __Manipulating Files__
+- __Working with Commands__
+- __Reading Man Pages__
+- __Keyboard Shortcuts for Bash__
 
 ## General Requirements
 
