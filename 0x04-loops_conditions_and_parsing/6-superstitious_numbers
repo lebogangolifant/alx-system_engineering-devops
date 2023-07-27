@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script displays numbers from 1 to 20 and specific messages for certain iterations.
+
+display=1
+
+while ((display <= 20)); do
+    if ((display == 4)); then
+        echo "$display"
+        echo "bad luck from China"
+    elif ((display == 9)); then
+        echo "$display"
+        echo "bad luck from Japan"
+    elif ((display == 17)); then
+        echo "$display"
+        echo "bad luck from Italy"
+    else
+        echo "$display"
+    fi
+    ((display++))
+done
