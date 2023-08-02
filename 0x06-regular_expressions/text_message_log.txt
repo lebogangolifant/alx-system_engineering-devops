@@ -1,8 +1,0 @@
-[Musa], to:[Thabo], flags:[urgent]
-[Zahara], to:[Ann], flags:[normal]
-[Amina], to:[Lethabo], flags:[high]
-[Nelson], to:[Nthabiseng], flags:[low]
-[Sharon], to:[Dineo], flags:[normal]
-[Shadia], to:[Amina], flags:[low]
-[Shalom], to:[Bob], flags:[urgent]
-[Tshepo], to:[Musa], flags:[normal]

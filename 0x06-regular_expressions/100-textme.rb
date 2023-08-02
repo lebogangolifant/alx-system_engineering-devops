@@ -1,26 +1,17 @@
 #!/usr/bin/env ruby
 
-# Accept the log file path as a command-line argument
-log_file_path = ARGV[0]
-
-# Read the log file
-log_content = File.read(log_file_path)
-
-puts "Log Content:"
-puts log_content
+# Accept the log entry as a command-line argument
+log_entry = ARGV[0]
 
 # Define a regular expression to extract the required information
-regex = /from:(?<sender>.*?)\], to:(?<receiver>.*?)\], flags:(?<flags>.*?)$/
+regex = /\[from:(.*?)\] \[to:(.*?)\] \[flags:(.*?)\]/
 
-# Scan the log content and extract the information using the regex
-matches = log_content.scan(regex)
+# Use the regular expression to extract sender, receiver, and flags
+matches = log_entry.match(regex)
 
-# Output the extracted information
-puts "SENDER,RECEIVER,FLAGS"
-
-matches.each do |match|
-  sender = match[0].strip
-  receiver = match[1].strip
-  flags = match[2].strip
-  puts "#{sender},#{receiver},#{flags}"
+# Check if a match was found before accessing the elements
+if matches
+  puts "#{matches[1]},#{matches[2]},#{matches[3]}"
+else
+  puts "No match found in the log entry."
 end
