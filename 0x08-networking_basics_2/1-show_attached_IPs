@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Use 'ip' command to get all active IPv4 addresses
+
+ip -4 addr | grep -oP 'inet \K[\d.]+'
