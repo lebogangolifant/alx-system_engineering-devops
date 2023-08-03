@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Configures a Ubuntu server
+# This script configures an Ubuntu server
 
 # Check if the script is running inside Docker
 if grep -q 'docker' /proc/1/cgroup; then
