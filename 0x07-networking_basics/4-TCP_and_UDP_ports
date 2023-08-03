@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script displays listening ports along with the PID and program name.
+
+sudo netstat -tulnep > tmp_output
+
+# Filter the output to show only the lines with 'LISTEN'
+grep 'LISTEN' tmp_output
+
+# Remove the temporary file
+rm tmp_output
