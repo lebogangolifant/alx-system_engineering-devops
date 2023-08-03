@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script listens on port 98 on localhost and echoes back any incoming data.
+
+# Function to handle incoming data on port 98
+handle_data() {
+  while IFS= read -r data; do
+    echo "$data"
+  done
+}
+
+# Listen on port 98
+nc -l -p 98 | handle_data
