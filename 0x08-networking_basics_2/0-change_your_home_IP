@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Configures a Ubuntu server
+
+# Check if the script is running inside Docker
+if grep -q 'docker' /proc/1/cgroup; then
+  # Edit /etc/hosts to set localhost IP to 127.0.0.2
+  sed -i 's/^127.*localhost$/127.0.0.2 localhost/' /etc/hosts
+
+  # Append the entry for facebook.com with IP 8.8.8.8
+  echo "8.8.8.8 facebook.com" >> /etc/hosts
+
+  echo "Hosts file updated. localhost now resolves to 127.0.0.2 and facebook.com resolves to 8.8.8.8."
+else
+  echo "This script is intended to run inside a Docker container. Exiting."
+  exit 1
+fi
