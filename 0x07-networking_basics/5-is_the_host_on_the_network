@@ -1,23 +1,9 @@
 #!/usr/bin/env bash
-# This script pings an IP address passed as an argument.
+# A Bash script that pings an IP address passed as an argument.
 
-display_usage() {
+if [ -z "$1" ]; then
     echo "Usage: $0 {IP_ADDRESS}"
-}
-
-if [ $# -eq 0 ]; then
-    display_usage
     exit 1
 fi
 
-# Extract the IP address from the argument
-ip_address=$1
-
-# Validate the IP address format using regex
-if ! [[ "$ip_address" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-    echo "Error: Invalid IP address format."
-    display_usage
-    exit 1
-fi
-
-ping -c 5 "$ip_address"
+ping -c 5 "$1"
