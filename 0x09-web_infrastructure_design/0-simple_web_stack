@@ -1,1 +1,10 @@
 https://drive.google.com/file/d/1AZSD03JuEkDiV-79l3ymMelKB2TpVYcu/view?usp=sharing
+
+Explanation:
+
+User: The user trying to access the website.
+DNS Server: Translates the domain name to an IP address.
+Web Server (Nginx): Serves as the entry point and handles requests.
+Application Server: Processes application logic.
+Application Files: Codebase containing web application logic.
+Database (MySQL): Stores data used by the application.
