@@ -1,0 +1,8 @@
+# Configure SSH client to use the private key,
+  and disable password authentication for the server
+
+Host 286995-web-01
+    HostName 18.210.20.140
+    User ubuntu  ubuntu
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
