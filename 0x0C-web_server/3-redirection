@@ -1,32 +1,24 @@
 #!/usr/bin/env bash
 # Script to configure Nginx for redirection on a new Ubuntu machine
 
-# Update the package list and install Nginx
-sudo apt-get update
-sudo apt-get install -y nginx
+# URL to redirect to
+link="https://github.com/lebogangolifant"
 
-# Create a simple "Hello World!" HTML page
-echo "Hello World!" | sudo tee /var/www/html/index.html
+# Update package list and install Nginx
+apt update
+apt install -y nginx
 
-# Create a custom Nginx configuration file for redirection
-sudo tee /etc/nginx/sites-available/redirect_me <<EOL
-server {
-    listen 80;
-    server_name _;
+# Allow Nginx through the firewall
+ufw allow 'Nginx HTTP'
 
-    location /redirect_me {
-        rewrite ^/redirect_me https://github.com/lebogangolifant permanent;
-    }
+# Create the Hello World HTML page
+echo "Hello World" > /var/www/html/index.html
 
-    include /etc/nginx/sites-available/default;
-}
-EOL
+# Update the default Nginx configuration with the 301 redirect
+sed -i "/location \/ {/ a \\
+    location /redirect_me/ {\\
+        rewrite ^/redirect_me/\$ $link permanent;\\
+    }" /etc/nginx/sites-available/default
 
-# Create a symbolic link to enable the redirection configuration
-sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
-
-# Test Nginx configuration for syntax errors
-sudo nginx -t
-
-# Reload Nginx to apply the configuration changes
-sudo service nginx reload
+# Restart Nginx to apply the configuration changes
+service nginx restart
