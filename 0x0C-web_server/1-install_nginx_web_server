@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Installs Nginx web server and serves "Hello World!"
+
+# Update package list and install Nginx
+apt-get update
+apt-get -y install nginx
+
+# Allow HTTP traffic through the firewall
+ufw allow 'Nginx HTTP'
+
+# Create a simple HTML page
+echo "Hello World!" > /var/www/html/index.html
+
+# Start the Nginx service
+service nginx start
