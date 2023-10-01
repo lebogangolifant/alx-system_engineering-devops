@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
-# Installs Nginx web server and serves "Hello World!"
+# This script installs Nginx and configures it to return "Hello World!" on the root path.
 
 # Update package list and install Nginx
-apt-get update
-apt-get -y install nginx
+sudo apt-get update
+sudo apt-get -y install nginx
 
-# Allow HTTP traffic through the firewall
-ufw allow 'Nginx HTTP'
-
-# Create a simple HTML page
+# Create a simple HTML file with "Hello World!"
 echo "Hello World!" > /var/www/html/index.html
 
 # Start the Nginx service
