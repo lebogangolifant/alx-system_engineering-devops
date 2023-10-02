@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 # This script configure Nginx for a 301 permanent redirection.
 
+# Update package list and install Nginx
+sudo apt-get update
+sudo apt-get -y install nginx
+
+# Create a simple HTML file with "Hello World!"
+echo "Hello World!" > /var/www/html/index.html
+
 # Define the string for replacement
 string_for_replacement="server_name _;\n\trewrite ^/redirect_me https://github.com/lebogangolifant permanent;"
 
 # Use sed to replace the configuration in the Nginx default site file
 sudo sed -i "s#server_name _;#$string_for_replacement#" /etc/nginx/sites-enabled/default
 
-# Reload Nginx to apply the configuration changes
-sudo service nginx reload
+# Restart Nginx to apply the configuration changes
+sudo service nginx restart
