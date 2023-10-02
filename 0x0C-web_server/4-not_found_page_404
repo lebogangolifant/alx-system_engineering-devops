@@ -1,35 +1,30 @@
 #!/usr/bin/env bash
 # Configure Nginx for a custom 404 page
 
-# Update the package list and install Nginx
+# Update package list and install Nginx
 sudo apt-get update
-sudo apt-get install -y nginx
+sudo apt-get -y install nginx
 
-# Create a custom 404 page with the specified string
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+# Create a simple HTML file with "Hello World!"
+echo "Hello World!" > /var/www/html/index.html
 
-# Create a custom Nginx configuration file for the custom error page
-custom_config="/etc/nginx/sites-available/custom_404"
-sudo tee "$custom_config" > /dev/null <<EOL
-server {
-    listen 80 default_server;
-    server_name _;
+# Define the string for replacement
+string_for_replacement="server_name _;\n\trewrite ^/redirect_me https://github.com/lebogangolifant permanent;"
 
-    error_page 404 /404.html;
-    location = /404.html {
-        root /var/www/html;
-        internal;
-    }
+# Use sed to replace the configuration in the Nginx default site file
+sudo sed -i "s#server_name _;#$string_for_replacement#" /etc/nginx/sites-enabled/default
 
-    include /etc/nginx/sites-available/default;
-}
-EOL
+# Define the custom content for the 404 error page
+custom_content="Ceci n'est pas une page"
 
-# Create a symbolic link to enable the custom error page configuration
-sudo ln -s "$custom_config" /etc/nginx/sites-enabled/
+# Update the content of the existing 404.html file
+echo "$custom_content" | sudo tee /var/www/html/404.html > /dev/null
 
-# Test Nginx configuration for syntax errors
-sudo nginx -t
+# Define the server block configuration
+server_block="listen 80 default_server;\n\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
 
-# Reload Nginx to apply the configuration changes
-sudo service nginx reload
+# Use sudo with sed to replace the default Nginx configuration with the server block configuration
+sudo sed -i "s#listen 80 default_server;#$server_block#" /etc/nginx/sites-enabled/default
+
+# Restart Nginx to apply the configuration changes
+sudo service nginx restart
