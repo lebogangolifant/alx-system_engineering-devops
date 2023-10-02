@@ -1,24 +1,11 @@
 #!/usr/bin/env bash
-# Script to configure Nginx for redirection on a new Ubuntu machine
+# This script configure Nginx for a 301 permanent redirection.
 
-# URL to redirect to
-link="https://github.com/lebogangolifant"
+# Define the string for replacement
+string_for_replacement="server_name _;\n\trewrite ^/redirect_me https://github.com/lebogangolifant permanent;"
 
-# Update package list and install Nginx
-apt update
-apt install -y nginx
+# Use sed to replace the configuration in the Nginx default site file
+sudo sed -i "s#server_name _;#$string_for_replacement#" /etc/nginx/sites-enabled/default
 
-# Allow Nginx through the firewall
-ufw allow 'Nginx HTTP'
-
-# Create the Hello World HTML page
-echo "Hello World" > /var/www/html/index.html
-
-# Update the default Nginx configuration with the 301 redirect
-sed -i "/location \/ {/ a \\
-    location /redirect_me/ {\\
-        rewrite ^/redirect_me/\$ $link permanent;\\
-    }" /etc/nginx/sites-available/default
-
-# Restart Nginx to apply the configuration changes
-service nginx restart
+# Reload Nginx to apply the configuration changes
+sudo service nginx reload
