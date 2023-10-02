@@ -1,5 +1,4 @@
 # Install Nginx web server with Puppet
-include stdlib
 
 package { 'nginx':
   ensure => 'installed',
@@ -26,24 +25,9 @@ file { '/etc/nginx/sites-available/default':
 }
 
 # Enable the default Nginx site
-file { '/etc/nginx/sites-enabled/default':
+file_line { '/etc/nginx/sites-enabled/default':
   ensure  => 'link',
   target  => '/etc/nginx/sites-available/default',
-  require => File['/etc/nginx/sites-available/default'],
-  notify  => Service['nginx'],
-}
-
-# Create a custom configuration for the 301 redirect
-file { '/etc/nginx/sites-available/redirect_me':
-  content => template('nginx/redirect_me.erb'),
-  require => Package['nginx'],
-  notify  => Service['nginx'],
-}
-
-# Enable the custom configuration for the 301 redirect
-file { '/etc/nginx/sites-enabled/redirect_me':
-  ensure  => 'link',
-  target  => '/etc/nginx/sites-available/redirect_me',
-  require => File['/etc/nginx/sites-available/redirect_me'],
-  notify  => Service['nginx'],
+  after   => 'listen 80 default_server;',
+  line    => 'rewrite ^/redirect_me https://www.github.com/lebogangolifant permanent;',
 }
