@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Bash script to install and configure HAProxy for load balancing
+# Create a script to install and configure HAProxy on lb-01 server
+# Configure HAProxy to send traffic to web-01 and web-02 servers
+# Distribute requests using a roundrobin algorithm
+
+# Update the package list and install HAProxy
+sudo apt update
+sudo apt install -y haproxy
+
+#!/usr/bin/env bash
+# Bash script to install and configure HAProxy for load balancing
+
+# Update the package list and install HAProxy
+sudo apt update
+sudo apt install -y haproxy
+
+# Define the HAProxy configuration
+server_config="\
+frontend lebogangolifant_frontend
+  bind *:80
+  mode http
+  default_backend lebogangolifant_backend
+  timeout client 30s  # Set client timeout to 30 seconds
+
+backend lebogangolifant_backend
+  mode http  # Set the backend mode to HTTP
+  balance roundrobin
+  timeout server 30s  # Set server timeout to 30 seconds
+  server 286995-web-01 54.172.84.26:80 check
+  server 286995-web-02 52.23.177.182:80 check
+  timeout client 30s  # Add client timeout
+"
+
+# Echo the configuration directly into the HAProxy configuration file
+echo "$server_config" | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
+
+# Check HAProxy configuration for syntax errors
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+
+# Echo the configuration directly into the HAProxy configuration file
+echo "$server_config" | sudo tee i /etc/haproxy/haproxy.cfg > /dev/null
+
+# Enable HAProxy starts automatically upon system boot
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+
+# Restart HAProxy
+sudo service haproxy restart
