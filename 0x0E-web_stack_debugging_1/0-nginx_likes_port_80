@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Bash script that configures Nginx to listen on port 80 by removing and recreating a symbolic link for the default configuration file.
+
+# Remove the existing symbolic link for the default Nginx configuration in the sites-enabled directory
+sudo rm /etc/nginx/sites-enabled/default
+
+# Create a new symbolic link from the sites-available directory to sites-enabled for the default configuration
+sudo ln -n /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Restart the Nginx service to apply the configuration changes
+sudo service nginx restart
+
