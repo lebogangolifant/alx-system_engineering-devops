@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Bash script that Configure domain zone so that the subdomain www points to load-balancer IP
+
+# Function to query DNS and display information
+query_dns() {
+    local subdomain="$1"
+    local domain="$2"
+    local result
+    result="$(dig +short "$subdomain.$domain" | tail -n1)"
+
+    if [ -n "$result" ]; then
+        echo "The subdomain $subdomain is a A record and points to $result"
+    else
+        echo "The subdomain $subdomain does not exist."
+    fi
+}
+
+# Check if both domain and subdomain arguments are provided
+if [ "$#" -eq 2 ]; then
+    query_dns "$2" "$1"
+else
+    # Default subdomains to query
+    default_subdomains=("www" "lb-01" "web-01" "web-02")
+    for subdomain in "${default_subdomains[@]}"; do
+        query_dns "$subdomain" "$1"
+    done
+fi
