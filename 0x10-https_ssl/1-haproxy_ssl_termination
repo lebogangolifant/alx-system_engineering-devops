@@ -45,5 +45,5 @@ frontend lebogangolifant_frontend
 
 backend lebogangolifant_backend
   balance roundrobin
-  server 286995-web-01 54.172.84.26:80 check
-  server 286995-web-02 52.23.177.182:80 check
+  server web-01 54.172.84.26:80 check
+  server web-02 52.23.177.182:80 check
