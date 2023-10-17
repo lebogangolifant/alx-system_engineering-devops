@@ -1,5 +1,9 @@
 # Configure ufw on webservers and loadbalancer
 
+# Install ufw firewall
+sudo apt update
+sudo apt install ufw
+
 # Set default rules
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
