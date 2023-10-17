@@ -12,7 +12,7 @@ sed -i 's/user www-data;/user nginx;/' /etc/nginx/nginx.conf
 rm -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # Create a basic nginx server block to listen on port 8080
-echo 'server {
+printf 'server {
     listen 8080 default_server;
     server_name _;
 
@@ -28,7 +28,7 @@ ln -s /etc/nginx/sites-available/your-config /etc/nginx/sites-enabled/
 service nginx restart
 
 # Verify Nginx is running as nginx user and listening on port 8080
-ps auxff | grep ngin[x]
+pgrep -x nginx > /dev/null
 nc -z 0 8080
 
 # Clean up
