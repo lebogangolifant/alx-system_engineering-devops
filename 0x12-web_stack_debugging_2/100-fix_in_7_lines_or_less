@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-apt-get install -y nginx
-sed -i 's/user www-data;/user nginx;/' /etc/nginx/nginx.conf
-printf 'server { listen 8080 default_server; server_name _; location / { return 200 "Hello, Nginx is running as the nginx user!\n"; } }' > /etc/nginx/sites-available/your-config
-rm -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/your-config /etc/nginx/sites-enabled/
-service nginx restart
+# Configure Nginx to run as the nginx user and listen on all active IPs on port 8080
+sed -i 's/Listen 8080/#Listen 8080/g' /etc/apache2/ports.conf
+sed -i 's/#user www-data;/user nginx;/g' /etc/nginx/nginx.conf
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+pkill apache2
+chmod 755 /etc/apache2/ports.conf /etc/nginx/nginx.conf | sudo -u nginx service nginx restart
