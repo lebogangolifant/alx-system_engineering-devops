@@ -1,27 +1,13 @@
 #!/usr/bin/env bash
 # Generate a MySQL dump and creates a compressed archive out of it.
 
-[ "$#" -ne 1 ] && { echo "Usage: $0 <MySQL Password>"; exit 1; }
-
-# Get the current date in the specified format
-file_name=$(date +"%d-%m-%Y").tar.gz
-
-# MySQL password passed as argument
-mysql_password="$1"
-
-# Directory to store backup files
-backup_dir="/var/mysql_backup"
-
-# Create the backup directory if it doesn't exist
-mkdir -p "$backup_dir"
-
-# Perform MySQL dump
-mysqldump --all-databases -u root --password="$mysql_password" > "$backup_dir/backup.sql"
-
-# Check if the MySQL dump was successful
-if mysqldump --all-databases -u root --password="$mysql_password" > "$backup_dir/backup.sql"; then
-    # Create a tar.gz archive with the MySQL dump
-    tar -czvf "$backup_dir/$file_name" -C "$backup_dir" backup.sql && echo "MySQL backup completed as $file_name" || echo "Failed to create the archive."
-else
-    echo "MySQL dump failed. Check the password and permissions."
-fi
+# Get the current day, month, and year as variables.
+day=$(date +"%d")
+month=$(date +"%m")
+year=$(date +"%Y")
+# Create a file name for the backup in the format 'day-month-year.tar.gz'.
+file_name="$day-$month-$year.tar.gz"
+# Use mysqldump to create a MySQL dump of all databases.
+mysqldump --all-databases -u root --password="$1" > backup.sql
+# Create a tar-gzipped archive of the 'backup.sql' file.
+tar -czvf "$file_name" backup.sql
