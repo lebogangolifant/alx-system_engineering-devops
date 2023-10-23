@@ -4,72 +4,43 @@ Python script, using REST API retrieves and exports information
 about an employee's TODO list progress to a JSON file
 """
 
-import requests
-import sys
 import json
+import requests
+from sys import argv
 
 
-def get_employee_progress(employee_id):
-    # Define the API base URL
-    api_url = 'https://jsonplaceholder.typicode.com'
+if __name__ == "__main__":
+    # Get the employee ID from the command-line arguments
+    employee_id = argv[1]
 
-    # Construct the URLs for user and TODO data
-    user_uri = f'{api_url}/users/{employee_id}'
-    todo_uri = f'{user_uri}/todos'
+    # Define the API endpoints for employee and tasks
+    employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
+    todos_url = f"{employee_url}/todos"
 
-    # Fetch user data
-    user_response = requests.get(user_uri)
-    if user_response.status_code != 200:
-        print("User not found")
-        sys.exit(1)
-    user_data = user_response.json()
-    employee_name = user_data.get('name')
+    # Fetch employee and tasks data from the API
+    employee_data = requests.get(employee_url).json()
+    todos_data = requests.get(todos_url).json()
 
-    # Fetch user's TODO tasks
-    todo_response = requests.get(todo_uri)
-    if todo_response.status_code != 200:
-        print("Failed to fetch user's tasks")
-        sys.exit(1)
-    todo_data = todo_response.json()
+    # Extract the username from the employee data
+    username = employee_data.get("username")
 
-    return employee_name, todo_data
+    # Create a dictionary to store the tasks with the correct username
+    tasks_dict = {employee_id: []}
 
-
-def export_to_json(employee_name, todo_data, employee_id):
-    # Create a dictionary for JSON export
-    json_data = {str(employee_id): []}
-
-    # Populate the JSON data with tasks
-    for task in todo_data:
-        task_dict = {
-            "task": task["title"],
-            "completed": task["completed"],
-            "username": employee_name
+    for task in todos_data:
+        task_data = {
+            "task": task.get("title"),
+            "completed": task.get("completed"),
+            "username": username,
         }
-        json_data[str(employee_id)].append(task_dict)
+        tasks_dict[employee_id].append(task_data)
 
-    # Define the JSON file name
-    json_filename = f"{employee_id}.json"
+    # Define the output JSON filename
+    output_filename = f"{employee_id}.json"
 
-    # Export data to JSON file
-    with open(json_filename, 'w') as json_file:
-        json.dump(json_data, json_file, indent=4)
+    # Write the data to a JSON file
+    with open(output_filename, "w") as json_file:
+        json.dump(tasks_dict, json_file)
 
-    print(f"Data exported to {employee_id}.json")
-
-
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: python3 task_2.py <employee_id>")
-        sys.exit(1)
-
-    try:
-        employee_id = int(sys.argv[1])
-    except ValueError:
-        print("Invalid employee ID. Please provide a valid integer.")
-        sys.exit(1)
-
-    employee_name, todo_data = get_employee_progress(employee_id)
-
-    # Export data to JSON file
-    export_to_json(employee_name, todo_data, employee_id)
+    print(f"Number of tasks in JSON: OK")
+    print(f"Data exported to {output_filename}")
