@@ -27,10 +27,10 @@ if __name__ == "__main__":
 
     for task in todos_data:
         task_data = {
-            "USER_ID": str(user_id),
-            "USERNAME": str(username),
-            "TASK_COMPLETED_STATUS": str(task.get("completed")),
-            "TASK_TITLE": str(task.get("title")),
+            "USER_ID": user_id,
+            "USERNAME": username,
+            "TASK_COMPLETED_STATUS": task.get("completed"),
+            "TASK_TITLE": task.get("title"),
         }
         tasks.append(task_data)
 
@@ -43,7 +43,6 @@ if __name__ == "__main__":
     with open(output_filename, "w", newline="") as csv_file:
         csv_writer = csv.DictWriter(csv_file, fieldnames=header,
                                     quoting=csv.QUOTE_ALL)
-        csv_writer.writeheader()
         csv_writer.writerows(tasks)
 
     print(f"User ID and Username: OK")
