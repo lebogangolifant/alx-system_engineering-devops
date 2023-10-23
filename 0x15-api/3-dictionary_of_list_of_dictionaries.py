@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Python script that, using REST API retrieves all employees data,
 create a dictionary to store all tasks for each user
