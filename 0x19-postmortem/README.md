@@ -7,12 +7,12 @@
 ## Issue Summary
 
 - **Duration of Outage:** From 10:00 AM to 1:00 PM (SAST+2)
-- **Impact:** The e-commerce website experienced a severe outage, causing unresponsiveness for approximately six hours. Users were unable to complete purchases, and it affected 100% of visitors during the outage.
+- **Impact:** The e-commerce website experienced a severe outage, causing unresponsiveness for approximately three hours. Users were unable to complete purchases, and it affected 100% of visitors during the outage.
 - **Root Cause:** The root cause of the outage was inadequate server capacity planning for high-traffic events.
 
 ## Timeline
 
-- **Issue Detected:** November 26, 10:00 AM (SAST+2)
+- **Issue Detected:** November 25, 10:00 AM (SAST+2)
 - **Detection Method:** The issue was detected when monitoring systems triggered alerts due to a spike in server resource utilization. 
 - **Actions Taken:**
     - The technical team immediately investigated the issue, identifying it as a server overload.
