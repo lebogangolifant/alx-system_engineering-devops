@@ -2,7 +2,7 @@
 
 ## Visual Representation
 
-![Outage Diagram](https://bit.ly/postmortem_img)
+![postmortem](https://github.com/lebogangolifant/alx-system_engineering-devops/assets/61240044/acf97457-2f7e-48b8-8f19-7caea696633f)
 
 ## Issue Summary
 
