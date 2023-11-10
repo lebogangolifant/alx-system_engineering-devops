@@ -1,9 +1,5 @@
 # Postmortem Report: Black Friday Website Outage
 
-## Visual Representation
-
-![postmortem](https://github.com/lebogangolifant/alx-system_engineering-devops/assets/61240044/acf97457-2f7e-48b8-8f19-7caea696633f)
-
 ## Issue Summary
 
 - **Duration of Outage:** From 10:00 AM to 1:00 PM (SAST+2)
