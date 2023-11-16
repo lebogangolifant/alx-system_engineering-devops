@@ -2,6 +2,8 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
+    server_name _;
+
     add_header X-Served-By 286995-web-01;
 
     root   /var/www/html;
@@ -23,12 +25,11 @@ server {
 
      location / {
                 include proxy_params;
-                proxy_pass http://127.0.0.1:5003/2-hbnb/;
+                proxy_pass http://127.0.0.1:5003/2-hbnb;
         }
 
-        location /static {
-                autoindex off;
-                alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static;
+     location /static {
+              proxy_pass http://127.0.0.1:5003;
         }
 
     location /hbnb_static {
